@@ -1,0 +1,21 @@
+{
+  "customer": {
+    "_id": "5f6bbf5e3iaa25555555555",
+    "guid": "2b7c23dc-7573-475a-a1f0-125d6c566726",
+    "isActive": true,
+    "age": 98,
+    "name": "Vinson Petersen",
+    "gender": "male",
+    "company": "IDEALIS",
+    "email": "vinsonpetersen@idealis.com",
+    "phone": "+1 (878) 444-3441",
+    "address": "817 Grafton Street, Wedgewood, Oklahoma, 4031",
+    "response": "This is his son Bob, do you want to leave a message ?",
+    "registered": "2016-07-01T06:37:19 +04:00",
+    "sms_status": "DELIVERED",
+    "sms_count": 1,
+    "call_count": 1,
+    "call_status": "CALL_AGAIN",
+    "customer_status": "VERIFY_ID"
+  }
+}

@@ -1,0 +1,68 @@
+1. I will assume the following  - logically it seems that sms is used a primary method for "recall" message delivery , unless
+message needs to be provided to landline number / or customer did not (respond/confirmed identity) to sms message
+2. I have also assumed that a recalled item a "car wheel" for a new car
+
+# hashtags provided here are identical to pytest decorators , will allow flexible execution and simple tc management
+# some pytest fixtures may be exposed to devs , in that case they should be explicitly documented in confluence
+# message delivery and success report is presumed to be written in database  or log or http/https request
+
+Smoke test suite :
+
+[filename  - test_sms_bot.py]
+
+#smoke #sms #positive
+1. SMS out -> customer confirms identity -> set customer status to  "NOTIFIED" -> SMS status to "DELIVERED
+
+#smoke #sms #positive #slow
+2. SMS out -> no response -> set customer status to  "SMS AGAIN" -> SMS status to "FAILED", SMS counter +=1
+
+#smoke #sms #negative
+3. SMS out -> wrong identity -> set customer status to  "SMS AGAIN" -> SMS status to "FAILED", SMS counter +=1
+
+#smoke #sms # negative
+4. SMS out (2nd delivery) -> no response ->set customer status to  "CALL CUSTOMER" -> SMS status to "FAILED"
+
+#smoke #sms #positive #slow #timeout
+5. SMS out -> invalid response (empty reply/144 emojis/etc...) -> short timeout (5 min) -> repeat SMS -> identity
+confirmed -> set customer status to  "NOTIFIED" -> SMS status to "DELIVERED", SMS counter +=1
+
+#smoke #sms #negative #slow #timeout
+6. SMS out -> invalid response -> short timeout (5 min) -> -> repeat SMS -> no response -> customer number moved to "MAKE A CALL" queue
+
+(flag/another queue/am i over complicating here? how will this affect execution time and test result stability ? need
+to discuss with DEV, much simple way would be threat 2nd sms the same flow as first one ) (this scenario has multiple
+failure criteria should be minimized)
+
+
+[filename  - test_call_bot.py]
+Speech should be synthesized with different accent , tone etc...
+
+
+#smoke #phone_call #positive
+1. Call is made -> customer picks up phone -> confirm identity -> message delivered
+
+#smoke #phone_call #positive
+2. Call is made -> customer picks up phone -> confirm identity -> customer demands a human representative
+
+#smoke #phone_call #negative #multiple_scenarios
+3. Call is made -> customer picks up phone -> wrong identity -> report failure -> customer number moved to "ID VERIFICATION
+
+#smoke #phone_call #negative #multiple_scenarios
+4. Call is made -> customer picks up phone -> customer can't understand thinking machine  -> report failure -> customer
+status moved to "HUMAN REPRESENTATIVE REQUIRED" queue
+
+#smoke #phone_call #negative #multiple_scenarios
+5. Call is made -> customer picks up phone -> INAUDIBLE/NOISE/WIND/RAIN/BAD RECEPTION/ -> report failure -> customer number moved to "ID VERIFICATION BY HUMANS REQUIRED!" queue
+
+
+EXTRA TESTS :
+1. Call is made -> customer picks up phone -> battery dies -> the question is HOW DO WE HANDLE INTERRUPTION
+DURING "recall" MESSAGE DELIVERY ? When we started to play the message , but have not finished it (delay/latency etc..)
+2. Call is made -> customer's phone in call waiting state -> short timeout (1 hour) -> repeat call
+3. Call is made -> customer asks to call later -> short timeout (1 hour) -> repeat call
+4. How timezone for call validation is performed ? How much it will cost to company if customer is contacted at 4 am?
+How this is prevented ?
+5. Maybe time forwarding script can help
+6. Mix additional sounds
+7. Where is a follow up that items are actually recalled ? And if not ? Do we contact customer again ?
+8. How can i measure transcript precision ? Am I training my testing network (cool) or i have a parameter  like (96.5)

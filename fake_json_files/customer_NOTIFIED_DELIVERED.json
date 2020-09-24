@@ -1,0 +1,19 @@
+{
+  "customer": {
+    "_id": "5f6bbf394a13b5aa6c154f67",
+    "guid": "2b7c23dc-7573-475a-a1f0-125d6c566726",
+    "isActive": true,
+    "age": 38,
+    "name": "Marissa Mitchell",
+    "gender": "female",
+    "email": "marissamitchell@comdom.com",
+    "phone": "+1 (828) 498-3261",
+    "address": "638 Jackson Street, Eureka, Idaho, 2792",
+    "transcript": "Yes this is Marissa Speaking",
+    "registered": "2017-12-07T11:46:23 +05:00",
+    "sms_status": "DELIVERED",
+    "sms_count": 2,
+    "call_count": 0,
+    "customer_status": "NOTIFIED"
+  }
+}

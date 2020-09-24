@@ -1,0 +1,24 @@
+{
+  "customer": {
+    "_id": "5f6bbed55754f4efbc8574au",
+    "index": 0,
+    "guid": "6d39245d-5fc0-46c7-b35e-5e5be7437da1",
+    "isActive": true,
+    "age": 96,
+    "eyeColor": "brown",
+    "name": "Molly Nichols",
+    "gender": "female",
+    "company": "DYMI",
+    "email": "mollynichols@dymi.com",
+    "phone": "+1 (913) 437-3175",
+    "address": "880 Anna Court, Gasquet, Oklahoma, 9860",
+    "response": "Who is this ? ",
+    "registered": "2015-10-16T02:17:28 +04:00",
+    "latitude": -32.636613,
+    "longitude": 81.289029,
+    "sms_status": "DELIVERED",
+    "sms_count": 1,
+    "call_count": 0,
+    "customer_status": "NOTIFIED"
+  }
+}
