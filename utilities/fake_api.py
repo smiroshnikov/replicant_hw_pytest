@@ -4,8 +4,8 @@ import requests_mock
 from utilities.json_utils import SerializerDeserializer, CustomerStatusViewer
 from utilities.random_utils import FileUtils
 
-_P = "C:\\Users\\Art3m15\\IdeaProjects\\replicant_hw_no_bdd\\fake_json_files"
-
+# _P = "C:\\Users\\Art3m15\\IdeaProjects\\replicant_hw_no_bdd\\fake_json_files"
+_P = "/home/iidwuurliik/Desktop/py_dev/replicant_hw/replicant_hw_pytest/fake_json_files"
 
 # TODO  move to conftest.py as a pytest fixture
 

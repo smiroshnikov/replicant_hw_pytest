@@ -1,8 +1,8 @@
 import speech_recognition as sr
 from utilities.random_utils import FileUtils
 
-_P = "C:\\Users\\Art3m15\\IdeaProjects\\replicant_hw_no_bdd\\customer_conversations"
-
+# _P = "C:\\Users\\Art3m15\\IdeaProjects\\replicant_hw_no_bdd\\customer_conversations"
+_P = "/home/iidwuurliik/Desktop/py_dev/replicant_hw/replicant_hw_pytest/customer_conversations"
 
 class GenerateTranscript:
 
